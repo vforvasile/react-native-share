@@ -3,6 +3,8 @@ id: share-single
 title: Share.shareSingle
 ---
 
+The shareSingle() method allows a user to share a premade message via a single prechosen social medium. In other words, code specifies both the message that will be sent and the social medium through which the message will be sent. The user chooses only to whom the message is sent. This shared message may contain text, one or more files, or both.
+
 Open the share dialog with the specific application. This returns a promise similar to `Share.open`, keep in mind that you will need to handle the same response when the user cancel/dismiss.
 
 Using a promise implementation:
@@ -68,6 +70,7 @@ You can pass the option that will be handled by the native code, similar to `Sha
 | **FACEBOOK_STORIES** | ✅   | ✅ | 🚫 |
 | **PAGESMANAGER** | ✅   | 🚫 | 🚫 |
 | **WHATSAPP** | ✅   | ✅ | 🚫 |
+| **WHATSAPPBUSINESS** | ✅   | 🚫 | 🚫 |
 | **INSTAGRAM** | ✅   | ✅ | 🚫 |
 | **INSTAGRAM_STORIES** | ✅   | ✅ | 🚫 |
 | **GOOGLEPLUS** | ✅   | ✅ | 🚫 |
@@ -80,13 +83,12 @@ You can pass the option that will be handled by the native code, similar to `Sha
 
 ## Static values for Instagram Stories
 
-These values can be used when you are calling the method `Share.single` passing `Share.Social.INSTAGRAM_STORIES` on the `social` attribute.
+These values can be used when you are calling the method `Share.single` passing the attributes that you need (You can combine these attributes, Story will use properties that you pass).
 
 ```js
 import Share from 'react-native-share';
 
 const shareOptions = {
-    method: Share.InstagramStories.SHARE_BACKGROUND_AND_STICKER_IMAGE,
     backgroundImage: 'http://urlto.png',
     stickerImage: 'data:image/png;base64,<imageInBase64>', //or you can use "data:" link
     backgroundBottomColor: '#fefefe',
@@ -106,22 +108,10 @@ Use this properties to customize the instagram storie view.
 | :---- | :------: | :--- | :--- |
 | backgroundImage | string   | URL you want to share | ✅
 | stickerImage | string   | URL you want to share | ✅
-| method | string   | [List](#instagram-stories-method-list) | 🚫
 | backgroundBottomColor | string   | default #837DF4 | ✅
 | backgroundTopColor | string   | default #906df4 | ✅
 | attributionURL | string   | (optional) facebook beta-test | ✅
 | backgroundVideo | string   | URL you want to share | ✅
-
-#### Instagram stories method list
-
-Methods available when calling the `INSTAGRAM_STORIES` social option.
-
-| Name  | Required options    |
-| :---- | :------: |
-| **SHARE_BACKGROUND_IMAGE** | backgroundImage   |
-| **SHARE_STICKER_IMAGE** | stickerImage   |
-| **SHARE_BACKGROUND_AND_STICKER_IMAGE** | backgroundImage, stickerImage   |
-| **SHARE_BACKGROUND_VIDEO** | backgroundVideo   |
 
 ## Static Values for Facebook Stories
 These can be assessed using Share.Social property
